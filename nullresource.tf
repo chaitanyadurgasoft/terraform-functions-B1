@@ -25,7 +25,7 @@ resource "null_resource" "server-attach" {
     }
   }
   provisioner "local-exec" {
-    command = "echo ${aws_instance.WebServer.*.public_ip} >> public_ip.txt"
+    command = "echo ${element(aws_instance.WebServer.*.public_ip, count.index)} >> public_ip.txt"
 
   }
 }
