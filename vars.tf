@@ -6,3 +6,4 @@ variable "privatesubnet_cidr" {}
 variable "az" {}
 variable "ami" {}
 variable "key" {}
+variable "env" {}

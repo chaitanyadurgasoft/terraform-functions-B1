@@ -1,8 +1,8 @@
 resource "aws_instance" "WebServer" {
-  count                       = length(var.publicsubnet_cidr)
-  ami                         = var.ami
+  count                       = var.env == "dev" ? 1 : 3
+  ami                         = lookup(var.ami, var.region)
   instance_type               = "t2.micro"
-  key_name                    = var.key
+  key_name                    = lookup(var.key, var.region)
   subnet_id                   = element(aws_subnet.public_subnet.*.id, count.index)
   security_groups             = ["${aws_security_group.webserver.id}"]
   associate_public_ip_address = true
