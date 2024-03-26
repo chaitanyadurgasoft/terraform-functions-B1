@@ -22,3 +22,7 @@ output "private_subnet_2" {
 output "private_subnet_3" {
   value = aws_subnet.private_subnet.2.id
 }
+
+output "WebserversPublicIp" {
+  value = aws_instance.WebServer.*.public_ip
+}

@@ -6,7 +6,7 @@ resource "aws_subnet" "public_subnet" {
   tags = {
     Name = "${var.vpc_name}-PublicSubnet-${count.index + 1}"
   }
-map_public_ip_on_launch = true
+  map_public_ip_on_launch = true
 }
 
 resource "aws_subnet" "private_subnet" {
